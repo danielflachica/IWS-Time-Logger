@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<body>
+    <p>
+        ${DATE}
+        <br>
+        <i>ImagineWare Solutions</i>
+    </p>
+    <p>Dear ${COMPANY_HEAD},</p>
+    <p>Below is a contribution report for my work shift today:</p>
+    <table>
+        <tr>
+            <td>
+                <b>Elapsed Time:</b>
+                &nbsp;
+                ${ELAPSED_TIME}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>Contribution Summary:</b></td>
+        </tr>
+        <tr>
+            <td>${SUMMARY}</td>
+        </tr>
+    </table>
+    <p>
+        Sincerely,
+        <br>
+        <b>${USER_NAME}</b>
+    </p>
+</body>
+</html>
