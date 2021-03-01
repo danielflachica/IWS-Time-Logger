@@ -9,17 +9,33 @@
     </p>
     <p>Dear ${COMPANY_HEAD},</p>
     <p>Below is a contribution report for my work shift today:</p>
-    <table>
+    <table style="margin:0">
         <tr>
+            <td style="padding-right: 12px">
+                <b>Time Started:</b>
+            </td>
             <td>
-                <b>Elapsed Time:</b>
-                &nbsp;
-                ${ELAPSED_TIME}
+                ${START_TIME}
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td style="padding-right: 12px">
+                <b>Time Ended:</b>
+            </td>
+            <td>
+                ${END_TIME}
+            </td>
         </tr>
+        <tr>
+            <td style="padding-right: 12px">
+                <b>Elapsed Time:</b>
+            </td>
+            <td>
+                ${ELAPSED_TIME}
+            </td>
+        </tr>
+    </table>
+    <table style="margin:0">
         <tr>
             <td><b>Contribution Summary:</b></td>
         </tr>
