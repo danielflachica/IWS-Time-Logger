@@ -45,3 +45,4 @@ This work contribution tracker and time logger was designed to automate work shi
 - No support for bulleted summary reports, only plain text for now
 - No support for taking breaks in-between work sessions
 - No support for email service providers other than Gmail
+- Timer doesn't show start and end times of sessions yet
