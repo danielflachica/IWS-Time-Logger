@@ -1,6 +1,7 @@
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import os
 import PySimpleGUI as sg
 import smtplib
 from string import Template
@@ -32,6 +33,12 @@ def read_template(filename):
     with open(filename, 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
     return Template(template_file_content)
+
+# Function to return string-formatted time, given input from time.time()
+def format_time(time):
+    hours, rem = divmod(time, 3600)
+    minutes, seconds = divmod(rem, 60)
+    return "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
 
 MY_NAME, MY_ADDRESS, PASSWORD = get_credentials('credentials.txt')
 
@@ -146,25 +153,19 @@ if __name__ == "__main__":
             # compute total work duration
             total_time = elapsed_time - paused_time
             
-            # format elapsed time
-            hours, rem = divmod(elapsed_time, 3600)
-            minutes, seconds = divmod(rem, 60)
-            elapsed_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
-
-            # format paused time
-            hours, rem = divmod(paused_time, 3600)
-            minutes, seconds = divmod(rem, 60)
-            paused_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
-
-            # format total time
-            hours, rem = divmod(total_time, 3600)
-            minutes, seconds = divmod(rem, 60)
-            total_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
+            # format time variables
+            elapsed_time = format_time(elapsed_time)
+            paused_time = format_time(paused_time)
+            total_time = format_time(total_time)
 
             # disable/enable necessary buttons
             window.FindElement('START').Update(disabled=False)
             window.FindElement('PAUSE').Update(disabled=True)
             window.FindElement('END').Update(disabled=True)
+
+            # delete pause.txt, if exists
+            if os.path.exists('pause.txt'):
+                os.remove('pause.txt')
 
             # create new summary report window
             summary_layout = [
