@@ -34,6 +34,22 @@
                 ${ELAPSED_TIME}
             </td>
         </tr>
+        <tr>
+            <td style="padding-right: 12px">
+                <b>Time Paused:</b>
+            </td>
+            <td>
+                ${PAUSED_TIME}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-right: 12px">
+                <b>Work Duration:</b>
+            </td>
+            <td>
+                <b>${TOTAL_TIME}</b>
+            </td>
+        </tr>
     </table>
     <table style="margin:0">
         <tr>

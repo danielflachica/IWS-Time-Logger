@@ -203,6 +203,8 @@ if __name__ == "__main__":
                         START_TIME=t_start,
                         END_TIME=t_end,
                         ELAPSED_TIME=elapsed_time,
+                        PAUSED_TIME=paused_time,
+                        TOTAL_TIME=total_time,
                         SUMMARY=summary_report,
                         USER_NAME=MY_NAME.title()
                     )
