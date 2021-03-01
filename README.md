@@ -23,12 +23,15 @@ This work contribution tracker and time logger was designed to automate work shi
 7. Check your email for a copy of the report
 
 ## Troubleshooting
+- If, upon starting the app, it quits by itself, check your `credentials.txt` and enter your own details.
 - If you click "Submit" after typing a summary report and it won't send, check your `credentials.txt` and ensure you've entered the correct email address and password combination.
 - If that still doesn't work, make sure that your email service provider is Gmail. As of now, other domains are not yet supported.
 
 ## Limitations
 - As of writing, the system has not been tested to the fullest extent yet, there might be a few bugs outside of its primary usage (i.e. timer feature and sending email reports)
 - You have to manually specify recipients in a .txt file
-- No checking of valid domains before sending emails
+- No checking of valid domains before sending emails, the app just quits
 - Timer doesn't display how much time has passed since you clicked "start"
 - No support for bulleted summary reports, only plain text for now
+- No support for taking breaks in-between work sessions
+- No support for email service providers other than Gmail
