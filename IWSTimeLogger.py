@@ -62,7 +62,8 @@ if __name__ == "__main__":
     layout = [
         [sg.Text("IWS Time Logger", font=("Helvetica", 12, "bold"))],
         # [sg.Text("0.0s", key='time_display', font=("Helvetica", 16))],
-        [sg.Button("START", font=("Helvetica", 10))], 
+        [sg.Button("START", font=("Helvetica", 10))],
+        [sg.Button("PAUSE", font=("Helvetica", 10))],
         [sg.Button("END", enable_events=False, font=("Helvetica", 10))]
     ]
     window = sg.Window("IWS Time Logger", layout)
@@ -86,27 +87,93 @@ if __name__ == "__main__":
             t0 = time.time()    # for timing elapsed time
             t_start = datetime.now().strftime("%m/%d/%Y %H:%M:%S")   # for logging time started
             window.FindElement('START').Update(disabled=True)
+            window.FindElement('PAUSE').Update(disabled=False)
             window.FindElement('END').Update(disabled=False)
 
+        if event == "PAUSE":
+            # disable buttons
+            window.FindElement('PAUSE').Update(disabled=True)
+            window.FindElement('END').Update(disabled=True)
+
+            # start timing the "break"
+            tP = time.time()
+
+            # create new temporary pause window
+            pause_layout = [
+                [sg.Text("Timer paused", font=("Helvetica", 10))],
+                [sg.Button("CONTINUE")]
+            ]
+
+            pause_window = sg.Window("IWS Time Logger", pause_layout)
+            pause_event, pause_values = pause_window.read()
+
+            if pause_event == sg.WIN_CLOSED:
+                pause_event.close()
+                break
+            
+            if pause_event == "CONTINUE":
+                # enable buttons
+                window.FindElement('PAUSE').Update(disabled=False)
+                window.FindElement('END').Update(disabled=False)
+
+                # stop timing the "break"
+                tP = time.time() - tP
+
+                # write pause time to file
+                with open('pause.txt', 'a') as f:
+                    f.write(str(tP)+'\n')
+
+                # close window
+                pause_window.close()
+
         if event == "END":
+            # compute elapsed time
             tN = time.time()    # for timing elapsed time
             t_end = datetime.now().strftime("%m/%d/%Y %H:%M:%S")   # for logging time started
             elapsed_time = tN - t0
 
+            # compute paused time, if any
+            paused_time = 0
+            try:
+                f = open("pause.txt", 'r')
+                lines = f.readlines()
+                for line in lines:
+                    paused_time = paused_time + float(line.strip())
+                f.close()
+            except IOError:
+                pass    # proceed with rest of code execution
+
+            # compute total work duration
+            total_time = elapsed_time - paused_time
+            
             # format elapsed time
             hours, rem = divmod(elapsed_time, 3600)
             minutes, seconds = divmod(rem, 60)
-            # print("Elapsed time:", elapsed_time)
             elapsed_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
 
+            # format paused time
+            hours, rem = divmod(paused_time, 3600)
+            minutes, seconds = divmod(rem, 60)
+            paused_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
+
+            # format total time
+            hours, rem = divmod(total_time, 3600)
+            minutes, seconds = divmod(rem, 60)
+            total_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
+
+            # disable/enable necessary buttons
             window.FindElement('START').Update(disabled=False)
+            window.FindElement('PAUSE').Update(disabled=True)
             window.FindElement('END').Update(disabled=True)
 
-            # Create new summary report window
+            # create new summary report window
             summary_layout = [
                 [sg.Text("Time Started: " + t_start, font=("Helvetica", 10))],
                 [sg.Text("Time Ended: " + t_end, font=("Helvetica", 10))],
                 [sg.Text("Elapsed Time: " + elapsed_time, font=("Helvetica", 10))],
+                [sg.Text("Time Paused: " + paused_time, font=("Helvetica", 10))],
+                [sg.Text("Work Duration: " + total_time, font=("Helvetica", 10, "bold"))],
+                [sg.Text("")],
                 [sg.Text("Please enter a summary of the work done during your shift.", font=("Helvetica", 10))],
                 [sg.Text("A copy of your response will be sent to cyrus@imagineware.ph", font=("Helvetica", 10, "italic"))],
                 [sg.Multiline(size=(60, 10), key='content', font=("Helvetica", 10))],
