@@ -83,25 +83,29 @@ if __name__ == "__main__":
         # window.FindElement('END').Update(disabled=True)
 
         if event == "START":
-            t0 = time.time()
+            t0 = time.time()    # for timing elapsed time
+            t_start = datetime.now().strftime("%m/%d/%Y %H:%M:%S")   # for logging time started
             window.FindElement('START').Update(disabled=True)
             window.FindElement('END').Update(disabled=False)
 
         if event == "END":
-            tN = time.time()
+            tN = time.time()    # for timing elapsed time
+            t_end = datetime.now().strftime("%m/%d/%Y %H:%M:%S")   # for logging time started
             elapsed_time = tN - t0
 
             # format elapsed time
             hours, rem = divmod(elapsed_time, 3600)
             minutes, seconds = divmod(rem, 60)
             # print("Elapsed time:", elapsed_time)
-            elapsed_time = "{:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)
+            elapsed_time = "{:0>2}:{:0>2}:{:02.0f}".format(int(hours),int(minutes),seconds)
 
             window.FindElement('START').Update(disabled=False)
             window.FindElement('END').Update(disabled=True)
 
             # Create new summary report window
             summary_layout = [
+                [sg.Text("Time Started: " + t_start, font=("Helvetica", 10))],
+                [sg.Text("Time Ended: " + t_end, font=("Helvetica", 10))],
                 [sg.Text("Elapsed Time: " + elapsed_time, font=("Helvetica", 10))],
                 [sg.Text("Please enter a summary of the work done during your shift.", font=("Helvetica", 10))],
                 [sg.Text("A copy of your response will be sent to cyrus@imagineware.ph", font=("Helvetica", 10, "italic"))],
