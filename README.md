@@ -4,7 +4,17 @@ A work contribution tracker and time logger for IWS
 ## How it Works
 This work contribution tracker and time logger was designed to automate work shift summaries and reports. Whenever you start working on IWS-related projects, start the timer and end it once you're done. You'll then be presented with your work shift duration and a form where you can summarize the details of your work shift. By submitting the form, you'll notify IWS of your contributions via email; a copy of the said report will also be forwarded to your own email address.
 
+## Dependencies
+- `datetime`
+- `email`
+- `PySimpleGUI` (Installation: `pip3 install PySimpleGUI`)
+- `smtplib`
+- `string`
+- `sys`
+- `time` 
+
 ## Installation
+1. Install necessary dependencies. 
 1. Open `credentials.txt` and enter your credentials in the following format: `<first_name> <email> <password_for_email>`. Follow this format **strictly**.
 2. Open `recipients.txt` and APPEND your details in the following format: `<first_name> <IWS_email>`. DO NOT delete the first line (i.e. Cyrus' email details)
 3. Click [this link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4Mr32TdVzceNvqvSTxRurTYBXU6mPTBNunG75FZUbH4WUFpWpUv37D9zgyKjkyEUTk7Oqe2-BaTq9Gj_2OyNfKS6iPNCQ) and login with the same email you specified in `credentials.txt`. 
