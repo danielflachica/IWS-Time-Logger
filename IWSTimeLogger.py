@@ -133,6 +133,8 @@ if __name__ == "__main__":
                     message = message_template.substitute(
                         DATE=datetime.date(datetime.now()).strftime("%b %d, %Y"),
                         COMPANY_HEAD="Cyrus",
+                        START_TIME=t_start,
+                        END_TIME=t_end,
                         ELAPSED_TIME=elapsed_time,
                         SUMMARY=summary_report,
                         USER_NAME=MY_NAME.title()
