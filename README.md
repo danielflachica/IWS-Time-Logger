@@ -40,11 +40,11 @@ This work contribution tracker and time logger was designed to automate work shi
 - If that still doesn't work, make sure that your email service provider is Gmail. As of now, other domains are not yet supported.
 
 ## Limitations
-- As of writing, the system has not been tested to the fullest extent yet, there might be a few bugs outside of its primary usage (i.e. timer feature and sending email reports)
-- You have to manually specify recipients in a .txt file
-- No checking of valid domains before sending emails, the app just quits
-- Timer doesn't display how much time has passed since you clicked "start"
-- No support for bulleted summary reports, only plain text for now
-- No support for taking breaks in-between work sessions
-- No support for email service providers other than Gmail
-- Timer doesn't show start and end times of sessions yet
+- As of writing, the system has not been tested to the fullest extent yet, there might be a few bugs outside of its primary usage (i.e. timer feature and sending email reports).
+- You have to manually specify recipients in a .txt file. [See also #8](https://github.com/danielflachica/IWS-Time-Logger/issues/8).
+- No checking of valid domains before sending emails, the app just quits. [See also #7](https://github.com/danielflachica/IWS-Time-Logger/issues/7).
+- Timer doesn't display how much time has passed since you clicked "start". [See also #3](https://github.com/danielflachica/IWS-Time-Logger/issues/3).
+- No support for bulleted summary reports, only plain text for now. [See also #4](https://github.com/danielflachica/IWS-Time-Logger/issues/4).
+- No support for taking breaks in-between work sessions. [See also #5](https://github.com/danielflachica/IWS-Time-Logger/issues/5).
+- No support for email service providers other than Gmail. [See also #6](https://github.com/danielflachica/IWS-Time-Logger/issues/6).
+- Timer doesn't show start and end times of sessions yet. [See also #2](https://github.com/danielflachica/IWS-Time-Logger/issues/2).
