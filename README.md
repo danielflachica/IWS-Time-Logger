@@ -27,13 +27,15 @@ This work contribution tracker and time logger was designed to automate work shi
 
 ## Usage
 1. Follow the installation steps above before using for the first time
-1. Double click `IWSTimeLogger.py`
-2. Click "START"
+1. Double click `IWSTimeLogger.py` (or run using your Python interpreter via command line)
+2. Click "START" on the Timer window
 3. Begin work on IWS Projects
-4. Once finsished, click "END" on the Timer window
-5. Type a summary of your contributions 
-6. Click "Submit"
-7. Check your email for a copy of the report
+4. If you need to take a break, click "PAUSE" on the Timer window. A new window will pop up. Once ready to resume, click "CONTINUE"
+5. Once finsished, click "END" on the Timer window
+6. A new Summary Report window will pop up showing your work session details
+7. Type a summary of your contributions 
+8. Click "Submit"
+9. Check your email for a copy of the report
 
 ## Troubleshooting
 - If, upon starting the app, it quits by itself, check your `credentials.txt` and enter your own details.
