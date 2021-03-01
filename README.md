@@ -14,9 +14,11 @@ This work contribution tracker and time logger was designed to automate work shi
 - `time` 
 
 ## Installation
-1. Install necessary dependencies. 
-1. Open `credentials.txt` and enter your credentials in the following format: `<first_name> <email> <password_for_email>`. Follow this format **strictly**.
-2. Open `recipients.txt` and APPEND your details in the following format: `<first_name> <IWS_email>`. DO NOT delete the first line (i.e. Cyrus' email details)
+1. Install necessary dependencies.
+1. Create a file called `credentials.txt` in the root directory.
+1. Create a file called `recipients.txt` in the root directory and copy paste this on the first line: cyrus cyrus@imagineware.ph
+1. Open `credentials.txt` and enter your credentials in the following format: `<first_name> <email> <password_for_email>`. (ex: john john.doe@gmail.com password123) Follow this format **strictly**.
+2. Open `recipients.txt` and APPEND your details in the following format: `<first_name> <IWS_email>`. (ex: john john@imagineware.ph) DO NOT delete the first line (i.e. Cyrus' email details)
 3. Click [this link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4Mr32TdVzceNvqvSTxRurTYBXU6mPTBNunG75FZUbH4WUFpWpUv37D9zgyKjkyEUTk7Oqe2-BaTq9Gj_2OyNfKS6iPNCQ) and login with the same email you specified in `credentials.txt`. 
 4. In the resulting page, make sure that "Allow less secure apps" is switched to ON.
 5. In the root directory, open `IWSTimeLogger.py`.
