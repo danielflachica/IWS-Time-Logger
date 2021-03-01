@@ -7,6 +7,7 @@ This work contribution tracker and time logger was designed to automate work shi
 ## Dependencies
 - `datetime`
 - `email`
+- `os`
 - `PySimpleGUI` (Installation: `pip3 install PySimpleGUI`)
 - `smtplib`
 - `string`
@@ -26,13 +27,15 @@ This work contribution tracker and time logger was designed to automate work shi
 
 ## Usage
 1. Follow the installation steps above before using for the first time
-1. Double click `IWSTimeLogger.py`
-2. Click "START"
+1. Double click `IWSTimeLogger.py` (or run using your Python interpreter via command line)
+2. Click "START" on the Timer window
 3. Begin work on IWS Projects
-4. Once finsished, click "END" on the Timer window
-5. Type a summary of your contributions 
-6. Click "Submit"
-7. Check your email for a copy of the report
+4. If you need to take a break, click "PAUSE" on the Timer window. A new window will pop up. Once ready to resume, click "CONTINUE"
+5. Once finsished, click "END" on the Timer window
+6. A new Summary Report window will pop up showing your work session details
+7. Type a summary of your contributions 
+8. Click "Submit"
+9. Check your email for a copy of the report
 
 ## Troubleshooting
 - If, upon starting the app, it quits by itself, check your `credentials.txt` and enter your own details.
@@ -45,6 +48,4 @@ This work contribution tracker and time logger was designed to automate work shi
 - No checking of valid domains before sending emails, the app just quits. [See also #7](https://github.com/danielflachica/IWS-Time-Logger/issues/7).
 - Timer doesn't display how much time has passed since you clicked "start". [See also #3](https://github.com/danielflachica/IWS-Time-Logger/issues/3).
 - No support for bulleted summary reports, only plain text for now. [See also #4](https://github.com/danielflachica/IWS-Time-Logger/issues/4).
-- No support for taking breaks in-between work sessions. [See also #5](https://github.com/danielflachica/IWS-Time-Logger/issues/5).
 - No support for email service providers other than Gmail. [See also #6](https://github.com/danielflachica/IWS-Time-Logger/issues/6).
-- Timer doesn't show start and end times of sessions yet. [See also #2](https://github.com/danielflachica/IWS-Time-Logger/issues/2).
